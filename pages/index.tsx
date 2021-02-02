@@ -103,15 +103,14 @@ export default function Home() {
           </Grid>
           <Grid xs={12} sm={12}>
             <div>
-              <h2>Protocol Tokenomics</h2>
+              <h2>Incentives</h2>
               <ul>
                 <li>
                   Token holders are financially incentivized to adopt the
                   protocol.
                 </li>
                 <li>
-                  Developers are incentivized to produce social media
-                  applications around the protocol.
+                  Developers are incentivized to implement the protocol by building social media applications conforming to the spec.
                 </li>
                 <li>
                   Token holders are incentivized to stake the tokens to vote on
@@ -147,8 +146,7 @@ export default function Home() {
                 <Card design="Geist">
                   <h5>Likes ➡️ Tips</h5>
                   <p>
-                    When someone gives another user a "like," a token holder of
-                    that person earns in the form of a tip.
+                    When someone gives another user a "like," a tip is distributed to the user's token holders.
                   </p>
                 </Card>
               </Grid>
@@ -160,9 +158,9 @@ export default function Home() {
                       You’re incentivized to only follow people creating value &
                       will “follow” you back (often friends).
                     </li>
-                    <li>You could buy into the revenue stream of a user.</li>
+                    <li>You would be able to buy into the revenue stream of a user.</li>
                     <li>
-                      You could grow your personal value and a community,
+                      You would be able to grow your personal value and a community,
                       simultaneously.
                     </li>
                     <li>Friends would generate income for you.</li>
