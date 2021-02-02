@@ -110,7 +110,8 @@ export default function Home() {
                   protocol.
                 </li>
                 <li>
-                  Developers are incentivized to implement the protocol by building social media applications conforming to the spec.
+                  Developers are incentivized to implement the protocol by
+                  building social media applications conforming to the spec.
                 </li>
                 <li>
                   Token holders are incentivized to stake the tokens to vote on
@@ -146,7 +147,8 @@ export default function Home() {
                 <Card design="Geist">
                   <h5>Likes ➡️ Tips</h5>
                   <p>
-                    When someone gives another user a "like," a tip is distributed to the user's token holders.
+                    When someone gives another user a "like," a tip is
+                    distributed to the user's token holders.
                   </p>
                 </Card>
               </Grid>
@@ -158,10 +160,13 @@ export default function Home() {
                       You’re incentivized to only follow people creating value &
                       will “follow” you back (often friends).
                     </li>
-                    <li>You would be able to buy into the revenue stream of a user.</li>
                     <li>
-                      You would be able to grow your personal value and a community,
-                      simultaneously.
+                      You would be able to buy into the revenue stream of a
+                      user.
+                    </li>
+                    <li>
+                      You would be able to grow your personal value and a
+                      community, simultaneously.
                     </li>
                     <li>Friends would generate income for you.</li>
                   </ul>
