@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
     <VertoProvider theme={"Light"}>
       <Component {...pageProps} />
     </VertoProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

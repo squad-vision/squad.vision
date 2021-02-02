@@ -12,12 +12,12 @@ function chooseEmoji() {
 
 export default function Home() {
   const [emojis, setEmojis] = useState(["👶", "👶"]);
-  
+
   useEffect(() => {
     setEmojis([chooseEmoji(), chooseEmoji()]);
     setInterval(() => {
       setEmojis([chooseEmoji(), chooseEmoji()]);
-    }, 4000)
+    }, 4000);
   }, []);
   return (
     <>
@@ -43,30 +43,60 @@ export default function Home() {
             <Card shadow hoverable>
               <h2>About</h2>
               <p>
-                People deserve to earn proportional to the value they create, of any kind.
+                People deserve to earn proportional to the value they create, of
+                any kind.
               </p>
-              <p>By applying this concept to everything from artists to developers, a complete incentive-circle can be created.</p>
-              <p><span className={styles.currency}>$QUAD</span> powers the creation of social applications built on Arweave in a decentralized, democratic way.</p>
+              <p>
+                By applying this concept to everything from artists to
+                developers, a complete incentive-circle can be created.
+              </p>
+              <p>
+                <span className={styles.currency}>$QUAD</span> powers the
+                creation of social applications built on Arweave in a
+                decentralized, democratic way.
+              </p>
             </Card>
           </Grid>
           <Grid xs={24} sm={12}>
             <Card shadow hoverable>
               <h2>Goal</h2>
-              <p>Fund decentralized, censorship-resistant social projects that power <a className={styles.link} href="arweave.net/nMoePGNxaLNYA_32kzK6-dZYBeGXXCXLrf9vRyxld8I">ownership economies</a></p>
-              <p>If you're building a social application and need funding, rally the Arweave community to vote on funding your project with <span className={styles.currency}>$QUAD</span> tokens.</p>
+              <p>
+                Fund decentralized, censorship-resistant social projects that
+                power{" "}
+                <a
+                  className={styles.link}
+                  href="arweave.net/nMoePGNxaLNYA_32kzK6-dZYBeGXXCXLrf9vRyxld8I"
+                >
+                  ownership economies
+                </a>
+              </p>
+              <p>
+                If you're building a social application and need funding, rally
+                the Arweave community to vote on funding your project with{" "}
+                <span className={styles.currency}>$QUAD</span> tokens.
+              </p>
             </Card>
           </Grid>
           <Grid xs={24} sm={12}>
             <Card design="Geist">
-              <p>If you own <span className={styles.currency}>AR</span>, you likely own <span className={styles.currency}>$QUAD</span>.</p>
+              <p>
+                If you own <span className={styles.currency}>AR</span>, you
+                likely own <span className={styles.currency}>$QUAD</span>.
+              </p>
               <Input label="Your Wallet Address" />
-              <Button shadow type="primary" className={styles.submit}>Check your Balance</Button>
+              <Button shadow type="primary" className={styles.submit}>
+                Check your Balance
+              </Button>
               <Grid.Container gap={2}>
                 <Grid xs={12}>
-                  <Button type="success" className={styles.submit}>Buy / Sell</Button>
+                  <Button type="success" className={styles.submit}>
+                    Buy / Sell
+                  </Button>
                 </Grid>
                 <Grid xs={12}>
-                  <Button type="default" className={styles.submit}>cXYZ</Button>
+                  <Button type="default" className={styles.submit}>
+                    cXYZ
+                  </Button>
                 </Grid>
               </Grid.Container>
             </Card>
@@ -76,14 +106,18 @@ export default function Home() {
               <h2>Protocol Tokenomics</h2>
               <ul>
                 <li>
-                  Token holders are financially incentivized to adopt the protocol
-              </li>
+                  Token holders are financially incentivized to adopt the
+                  protocol
+                </li>
                 <li>
-                  Developers are incentivized to produce social media applications around the protocol
-              </li>
+                  Developers are incentivized to produce social media
+                  applications around the protocol
+                </li>
                 <li>
-                  Token holders are incentivized to stake the tokens to vote on proposals such as funding developers, updating site content (this!), & changing community settings.
-              </li>
+                  Token holders are incentivized to stake the tokens to vote on
+                  proposals such as funding developers, updating site content
+                  (this!), & changing community settings.
+                </li>
               </ul>
             </div>
           </Grid>
@@ -93,19 +127,29 @@ export default function Home() {
               <Grid xs={24} sm={8}>
                 <Card design="Geist">
                   <h5>Profiles ➡️ Social Tokens</h5>
-                  <p>Users become their own PSTs, where "following" another user mints a token for them to give to that person.</p>
+                  <p>
+                    Users become their own PSTs, where "following" another user
+                    mints a token for them to give to that person.
+                  </p>
                 </Card>
               </Grid>
               <Grid xs={24} sm={8}>
                 <Card design="Geist">
                   <h5>Posts ➡️ NFTs</h5>
-                  <p>These <i>tokens</i> can either be collectively owned by holders of your social token, or they can be sold to other users.</p>
+                  <p>
+                    These <i>tokens</i> can either be collectively owned by
+                    holders of your social token, or they can be sold to other
+                    users.
+                  </p>
                 </Card>
               </Grid>
               <Grid xs={24} sm={8}>
                 <Card design="Geist">
                   <h5>Likes ➡️ Tips</h5>
-                  <p>When someone gives another user a "like," a token holder of that person earns in the form of a tip.</p>
+                  <p>
+                    When someone gives another user a "like," a token holder of
+                    that person earns in the form of a tip.
+                  </p>
                 </Card>
               </Grid>
               <Grid xs={24}>
@@ -113,17 +157,15 @@ export default function Home() {
                   <h4>Takeaways</h4>
                   <ul>
                     <li>
-                      You’re incentivized to only follow people creating value & will “follow” you back (often friends).
+                      You’re incentivized to only follow people creating value &
+                      will “follow” you back (often friends).
                     </li>
+                    <li>You could buy into the revenue stream of a user.</li>
                     <li>
-                      You could buy into the revenue stream of a user. 
+                      You could grow your personal value and a community,
+                      simultaneously.
                     </li>
-                    <li>
-                      You could grow your personal value and a community, simultaneously.
-                    </li>
-                    <li>
-                      Friends would generate income for you.
-                    </li>
+                    <li>Friends would generate income for you.</li>
                   </ul>
                 </Card>
               </Grid>
@@ -135,5 +177,5 @@ export default function Home() {
         </Grid.Container>
       </Page>
     </>
-  )
+  );
 }
