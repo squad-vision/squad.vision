@@ -107,11 +107,11 @@ export default function Home() {
               <ul>
                 <li>
                   Token holders are financially incentivized to adopt the
-                  protocol
+                  protocol.
                 </li>
                 <li>
                   Developers are incentivized to produce social media
-                  applications around the protocol
+                  applications around the protocol.
                 </li>
                 <li>
                   Token holders are incentivized to stake the tokens to vote on
