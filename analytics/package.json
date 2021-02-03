@@ -1,0 +1,15 @@
+{
+  "name": "analytics",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node populationActivity.js"
+  },
+  "dependencies": {
+    "ar-gql": "^0.0.3",
+    "arweave": "^1.10.3",
+    "cli-progress": "^3.9.0",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1"
+  }
+}
