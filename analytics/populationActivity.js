@@ -54,8 +54,8 @@ const prog = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
         ).data.transactions.edges;
         if (data.length === 1) {
           if (data[0].node.block) {
-            const time = moment(data[0].node.block.timestamp);
-            const duration = moment.duration(time.diff(start));
+            const time = moment.unix(data[0].node.block.timestamp);
+            const duration = moment.duration(start.diff(time));
 
             if (duration.asMonths() < 6) {
               wallets[entry.address] = balance;
