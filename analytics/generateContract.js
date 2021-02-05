@@ -64,15 +64,15 @@ function generateInitialState(balances) {
     votes: [],
     roles: {},
     settings: [
-      ["quorum", 0.5],
+      ["quorum", 0.3],
       ["support", 0.5],
-      ["voteLength", 2160],
-      ["lockMinLength", 129600],
+      ["voteLength", 5040],
+      ["lockMinLength", 4320],
       ["lockMaxLength", 1051200],
       ["communityAppUrl", "https://squad.vision"],
       ["communityDiscussionLinks", ["https://verto.exchange/chat"]],
       ["communityDescription", "An unstoppable social protocol 🌍"],
-      ["communityLogo", "--------TATE TODO--------"],
+      ["communityLogo", "00gT33gZpgWK4HMS0AuEy8OXC5_xyQjyJCsX6ps0iuM"],
       ["siteDeployment", "--------TATE TODO--------"]
     ]
   }

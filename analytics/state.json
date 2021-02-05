@@ -17322,7 +17322,7 @@
   "settings": [
     [
       "quorum",
-      0.5
+      0.3
     ],
     [
       "support",
@@ -17330,7 +17330,7 @@
     ],
     [
       "voteLength",
-      2160
+      5040
     ],
     [
       "lockMinLength",
