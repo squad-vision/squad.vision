@@ -11,7 +11,9 @@ function chooseEmoji() {
 }
 
 async function getState() {
-  const rawState = await fetch("https://cache.community.xyz/contract/bG4FzHB19RclVEU3pimgtw1oijono0y-XfDRZR_Nlhc");
+  const rawState = await fetch(
+    "https://cache.community.xyz/contract/bG4FzHB19RclVEU3pimgtw1oijono0y-XfDRZR_Nlhc"
+  );
   const state = await rawState.clone().json();
 
   return state;
@@ -20,7 +22,7 @@ async function getState() {
 async function checkBalance(address: string) {
   const state = await getState();
   const balances = state.balances;
-  
+
   if (address in balances) {
     return balances[address];
   } else {
@@ -36,8 +38,8 @@ async function getProposals() {
   for (const proposal of state.votes) {
     proposals.push({
       ...proposal,
-      quorum
-    })
+      quorum,
+    });
   }
 
   return proposals.reverse();
@@ -46,7 +48,7 @@ async function getProposals() {
 export default function Home() {
   const [emojis, setEmojis] = useState(["👶", "👶"]);
   const [proposals, setProposals] = useState([]);
-  
+
   const addressHook = useInput("");
   const [loadingBalance, setLoadingBalance] = useState(false);
   const [balanceLoaded, setBalanceLoaded] = useState(false);
@@ -64,7 +66,10 @@ export default function Home() {
     <>
       <Head>
         <title>$QUAD</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤙</text></svg>" />
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤙</text></svg>"
+        />
       </Head>
       <Page>
         <Grid.Container justify="center" gap={2}>
@@ -91,7 +96,10 @@ export default function Home() {
                 By applying this concept to everything from artists to
                 developers, a complete incentive-circle can be created.
               </p>
-              <p><span className={styles.currency}>$QUAD</span> is a protocol powered by a universal, flexible transaction tagging standard.</p>
+              <p>
+                <span className={styles.currency}>$QUAD</span> is a protocol
+                powered by a universal, flexible transaction tagging standard.
+              </p>
               <p>
                 <span className={styles.currency}>$QUAD</span> powers the
                 creation of social applications built on Arweave in a
@@ -117,7 +125,11 @@ export default function Home() {
                 the Arweave community to vote on funding your project with{" "}
                 <span className={styles.currency}>$QUAD</span> tokens.
               </p>
-              <p>Any transactions made on a social platform should include the tag: <code>Protocol</code>: <code>SQUAD</code> in addition to any applicable tags in the spec.</p>
+              <p>
+                Any transactions made on a social platform should include the
+                tag: <code>Protocol</code>: <code>SQUAD</code> in addition to
+                any applicable tags in the spec.
+              </p>
             </Card>
           </Grid>
           <Grid xs={24} sm={12}>
@@ -126,28 +138,41 @@ export default function Home() {
                 If you own <span className={styles.currency}>AR</span>, you
                 likely own <span className={styles.currency}>$QUAD</span>.
               </p>
-              {balanceLoaded && <h1 className={styles.center + " " + styles.code}>{balance}</h1>}
+              {balanceLoaded && (
+                <h1 className={styles.center + " " + styles.code}>{balance}</h1>
+              )}
               <Input label="Your Wallet Address" {...addressHook.bindings} />
-              <Button shadow type="primary" className={styles.submit} onClick={async () => {
-                setLoadingBalance(true);
-                const balance = await checkBalance(addressHook.state.toString());
-                
-                setBalance(balance);
-                setLoadingBalance(false);
-                setBalanceLoaded(true);
-              }} loading={loadingBalance}>
+              <Button
+                shadow
+                type="primary"
+                className={styles.submit}
+                onClick={async () => {
+                  setLoadingBalance(true);
+                  const balance = await checkBalance(
+                    addressHook.state.toString()
+                  );
+
+                  setBalance(balance);
+                  setLoadingBalance(false);
+                  setBalanceLoaded(true);
+                }}
+                loading={loadingBalance}
+              >
                 Check your Balance
               </Button>
               <Grid.Container gap={2}>
                 <Grid xs={12}>
-                  <Link href="https://verto.exchange" style={{ "width": "100%" }}>
+                  <Link href="https://verto.exchange" style={{ width: "100%" }}>
                     <Button type="success" className={styles.submit}>
                       Buy / Sell
                     </Button>
                   </Link>
                 </Grid>
                 <Grid xs={12}>
-                  <Link href="https://community.xyz/#bG4FzHB19RclVEU3pimgtw1oijono0y-XfDRZR_Nlhc" style={{ "width": "100%" }}>
+                  <Link
+                    href="https://community.xyz/#bG4FzHB19RclVEU3pimgtw1oijono0y-XfDRZR_Nlhc"
+                    style={{ width: "100%" }}
+                  >
                     <Button type="default" className={styles.submit}>
                       cXYZ
                     </Button>
@@ -186,7 +211,9 @@ export default function Home() {
                     Users become their own PSTs, where "following" another user
                     mints a token for them to give to that person.
                   </p>
-                  <p className={styles.center}><code>Type</code>: <code>Profile</code></p>
+                  <p className={styles.center}>
+                    <code>Type</code>: <code>Profile</code>
+                  </p>
                 </Card>
               </Grid>
               <Grid xs={24} sm={8}>
@@ -197,7 +224,9 @@ export default function Home() {
                     holders of your social token, or they can be sold to other
                     users.
                   </p>
-                  <p className={styles.center}><code>Type</code>: <code>Post</code></p>
+                  <p className={styles.center}>
+                    <code>Type</code>: <code>Post</code>
+                  </p>
                 </Card>
               </Grid>
               <Grid xs={24} sm={8}>
@@ -207,7 +236,9 @@ export default function Home() {
                     When someone gives another user a "like," a tip is
                     distributed to the user's token holders.
                   </p>
-                  <p className={styles.center}><code>Type</code>: <code>Tip</code></p>
+                  <p className={styles.center}>
+                    <code>Type</code>: <code>Tip</code>
+                  </p>
                 </Card>
               </Grid>
               <Grid xs={24}>
@@ -237,12 +268,31 @@ export default function Home() {
             <Grid.Container gap={2}>
               {proposals.map((proposal) => (
                 <Grid xs={24} sm={12} md={8}>
-                  <Link target="_blank" href="https://community.xyz/#bG4FzHB19RclVEU3pimgtw1oijono0y-XfDRZR_Nlhc/votes">
+                  <Link
+                    target="_blank"
+                    href="https://community.xyz/#bG4FzHB19RclVEU3pimgtw1oijono0y-XfDRZR_Nlhc/votes"
+                  >
                     <Card design="Geist" hoverable>
-                      <Dot type={proposal.status === "active" ? "warning" : (proposal.status === "quorumFailed" ? "error" : "success")}></Dot>
+                      <Dot
+                        type={
+                          proposal.status === "active"
+                            ? "warning"
+                            : proposal.status === "quorumFailed"
+                            ? "error"
+                            : "success"
+                        }
+                      ></Dot>
                       <b>{proposal.type}</b>
                       <p>{proposal.note}</p>
-                      <Progress type={proposal.yays / proposal.totalWeight >= proposal.quorum ? "success" : "error"} value={(proposal.yays / proposal.totalWeight) * 100} />
+                      <Progress
+                        type={
+                          proposal.yays / proposal.totalWeight >=
+                          proposal.quorum
+                            ? "success"
+                            : "error"
+                        }
+                        value={(proposal.yays / proposal.totalWeight) * 100}
+                      />
                     </Card>
                   </Link>
                 </Grid>

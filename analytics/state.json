@@ -17326,47 +17326,15 @@
   "votes": [],
   "roles": {},
   "settings": [
-    [
-      "quorum",
-      0.3
-    ],
-    [
-      "support",
-      0.5
-    ],
-    [
-      "voteLength",
-      5040
-    ],
-    [
-      "lockMinLength",
-      4320
-    ],
-    [
-      "lockMaxLength",
-      1051200
-    ],
-    [
-      "communityAppUrl",
-      "https://squad.vision"
-    ],
-    [
-      "communityDiscussionLinks",
-      [
-        "https://verto.exchange/chat"
-      ]
-    ],
-    [
-      "communityDescription",
-      "An unstoppable social protocol 🌍"
-    ],
-    [
-      "communityLogo",
-      "00gT33gZpgWK4HMS0AuEy8OXC5_xyQjyJCsX6ps0iuM"
-    ],
-    [
-      "siteDeployment",
-      ""
-    ]
+    ["quorum", 0.3],
+    ["support", 0.5],
+    ["voteLength", 5040],
+    ["lockMinLength", 4320],
+    ["lockMaxLength", 1051200],
+    ["communityAppUrl", "https://squad.vision"],
+    ["communityDiscussionLinks", ["https://verto.exchange/chat"]],
+    ["communityDescription", "An unstoppable social protocol 🌍"],
+    ["communityLogo", "00gT33gZpgWK4HMS0AuEy8OXC5_xyQjyJCsX6ps0iuM"],
+    ["siteDeployment", ""]
   ]
 }
