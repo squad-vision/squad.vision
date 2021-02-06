@@ -1,41 +1,64 @@
 import Head from "next/head";
-import Arweave from "arweave";
-import { readContract } from "smartweave";
 import { useEffect, useState } from "react";
-import { Page, Card, Input, Button } from "@verto/ui";
-import { Grid, Link } from "@geist-ui/react";
+import { useInput, Page, Card, Input, Button } from "@verto/ui";
+import { Grid, Link, Dot, Progress } from "@geist-ui/react";
 import { allEmojis } from "../utils/emojis";
 
 import styles from "../styles/Home.module.sass";
-
-const arweave = Arweave.init({
-  host: 'arweave.net',
-  port: 443,
-  protocol: 'https',
-  timeout: 20000,
-  logging: false,
-});
 
 function chooseEmoji() {
   return allEmojis[Math.floor(Math.random() * (allEmojis.length - 1))];
 }
 
-async function checkBalance() {
-  await readContract(arweave, "");
+async function getState() {
+  const rawState = await fetch("https://cache.community.xyz/contract/bG4FzHB19RclVEU3pimgtw1oijono0y-XfDRZR_Nlhc");
+  const state = await rawState.clone().json();
+
+  return state;
+}
+
+async function checkBalance(address: string) {
+  const state = await getState();
+  const balances = state.balances;
+  
+  if (address in balances) {
+    return balances[address];
+  } else {
+    return 0;
+  }
 }
 
 async function getProposals() {
+  const state = await getState();
+  const quorum = state.settings.find((setting) => setting[0] === "quorum")[1];
 
+  const proposals = [];
+  for (const proposal of state.votes) {
+    proposals.push({
+      ...proposal,
+      quorum
+    })
+  }
+
+  return proposals.reverse();
 }
 
 export default function Home() {
   const [emojis, setEmojis] = useState(["👶", "👶"]);
+  const [proposals, setProposals] = useState([]);
+  
+  const addressHook = useInput("");
+  const [loadingBalance, setLoadingBalance] = useState(false);
+  const [balanceLoaded, setBalanceLoaded] = useState(false);
+  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     setEmojis([chooseEmoji(), chooseEmoji()]);
     setInterval(() => {
       setEmojis([chooseEmoji(), chooseEmoji()]);
     }, 4000);
+
+    getProposals().then((proposals) => setProposals(proposals));
   }, []);
   return (
     <>
@@ -103,8 +126,16 @@ export default function Home() {
                 If you own <span className={styles.currency}>AR</span>, you
                 likely own <span className={styles.currency}>$QUAD</span>.
               </p>
-              <Input label="Your Wallet Address" />
-              <Button shadow type="primary" className={styles.submit}>
+              {balanceLoaded && <h1 className={styles.center + " " + styles.code}>{balance}</h1>}
+              <Input label="Your Wallet Address" {...addressHook.bindings} />
+              <Button shadow type="primary" className={styles.submit} onClick={async () => {
+                setLoadingBalance(true);
+                const balance = await checkBalance(addressHook.state.toString());
+                
+                setBalance(balance);
+                setLoadingBalance(false);
+                setBalanceLoaded(true);
+              }} loading={loadingBalance}>
                 Check your Balance
               </Button>
               <Grid.Container gap={2}>
@@ -116,7 +147,7 @@ export default function Home() {
                   </Link>
                 </Grid>
                 <Grid xs={12}>
-                  <Link href="https://verto.exchange" style={{ "width": "100%" }}>
+                  <Link href="https://community.xyz/#bG4FzHB19RclVEU3pimgtw1oijono0y-XfDRZR_Nlhc" style={{ "width": "100%" }}>
                     <Button type="default" className={styles.submit}>
                       cXYZ
                     </Button>
@@ -203,6 +234,25 @@ export default function Home() {
           </Grid>
           <Grid xs={24}>
             <h2>Community Proposals</h2>
+            <Grid.Container gap={2}>
+              {proposals.map((proposal) => (
+                <Grid xs={24} sm={12} md={8}>
+                  <Link target="_blank" href="https://community.xyz/#bG4FzHB19RclVEU3pimgtw1oijono0y-XfDRZR_Nlhc/votes">
+                    <Card design="Geist" hoverable>
+                      <Dot type={proposal.status === "active" ? "warning" : (proposal.status === "quorumFailed" ? "error" : "success")}></Dot>
+                      <b>{proposal.type}</b>
+                      <p>{proposal.note}</p>
+                      <Progress type={proposal.yays / proposal.totalWeight >= proposal.quorum ? "success" : "error"} value={(proposal.yays / proposal.totalWeight) * 100} />
+                    </Card>
+                  </Link>
+                </Grid>
+              ))}
+              {proposals.length === 0 && (
+                <Grid xs={24}>
+                  <p className={styles.center}>No proposals yet ⌛</p>
+                </Grid>
+              )}
+            </Grid.Container>
           </Grid>
         </Grid.Container>
       </Page>
