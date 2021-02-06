@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Arweave from "arweave";
+import { readContract } from "smartweave";
 import { useEffect, useState } from "react";
 import { Page, Card, Input, Button } from "@verto/ui";
 import { Grid, Link } from "@geist-ui/react";
@@ -6,8 +8,24 @@ import { allEmojis } from "../utils/emojis";
 
 import styles from "../styles/Home.module.sass";
 
+const arweave = Arweave.init({
+  host: 'arweave.net',
+  port: 443,
+  protocol: 'https',
+  timeout: 20000,
+  logging: false,
+});
+
 function chooseEmoji() {
   return allEmojis[Math.floor(Math.random() * (allEmojis.length - 1))];
+}
+
+async function checkBalance() {
+  await readContract(arweave, "");
+}
+
+async function getProposals() {
+
 }
 
 export default function Home() {
@@ -107,7 +125,7 @@ export default function Home() {
               </Grid.Container>
             </Card>
           </Grid>
-          <Grid xs={12} sm={12}>
+          <Grid xs={12} sm={12} className={styles.incentives}>
             <div>
               <h2>Incentives</h2>
               <ul>
