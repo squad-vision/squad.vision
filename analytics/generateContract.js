@@ -11,9 +11,7 @@ const client = new Arweave({
   protocol: "https",
 });
 
-async function getWallets() {
-  // const data = fs.readFileSync("./02.05.2021/wallets.json");
-  
+async function getWallets() {  
   // Counting variables
   let totalSQUAD = 0;
   let addressCount = 0;
@@ -50,8 +48,8 @@ async function getWallets() {
     prog.update(i + 1);
   }
 
-  console.log("Total $QUAD", totalSQUAD);
-  console.log("Number of addresses", addressCount);
+  console.log("Total $QUAD \n\n\n", totalSQUAD);
+  console.log("\n\n\nNumber of addresses", addressCount);
   return allBalances;
 }
 
@@ -73,7 +71,7 @@ function generateInitialState(balances) {
       ["communityDiscussionLinks", ["https://verto.exchange/chat"]],
       ["communityDescription", "An unstoppable social protocol 🌍"],
       ["communityLogo", "00gT33gZpgWK4HMS0AuEy8OXC5_xyQjyJCsX6ps0iuM"],
-      ["siteDeployment", "--------TATE TODO--------"]
+      ["siteDeployment", ""]
     ]
   }
 }
