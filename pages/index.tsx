@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { Page, Card, Input, Button } from "@verto/ui";
-import { Grid } from "@geist-ui/react";
+import { Grid, Link } from "@geist-ui/react";
 import { allEmojis } from "../utils/emojis";
 
 import styles from "../styles/Home.module.sass";
@@ -23,7 +23,7 @@ export default function Home() {
     <>
       <Head>
         <title>$QUAD</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤙</text></svg>" />
       </Head>
       <Page>
         <Grid.Container justify="center" gap={2}>
@@ -50,6 +50,7 @@ export default function Home() {
                 By applying this concept to everything from artists to
                 developers, a complete incentive-circle can be created.
               </p>
+              <p><span className={styles.currency}>$QUAD</span> is a protocol powered by a universal, flexible transaction tagging standard.</p>
               <p>
                 <span className={styles.currency}>$QUAD</span> powers the
                 creation of social applications built on Arweave in a
@@ -65,7 +66,7 @@ export default function Home() {
                 power{" "}
                 <a
                   className={styles.link}
-                  href="arweave.net/nMoePGNxaLNYA_32kzK6-dZYBeGXXCXLrf9vRyxld8I"
+                  href="https://arweave.net/nMoePGNxaLNYA_32kzK6-dZYBeGXXCXLrf9vRyxld8I"
                 >
                   ownership economies
                 </a>
@@ -75,6 +76,7 @@ export default function Home() {
                 the Arweave community to vote on funding your project with{" "}
                 <span className={styles.currency}>$QUAD</span> tokens.
               </p>
+              <p>Any transactions made on a social platform should include the tag: <code>Protocol</code>: <code>SQUAD</code> in addition to any applicable tags in the spec.</p>
             </Card>
           </Grid>
           <Grid xs={24} sm={12}>
@@ -89,14 +91,18 @@ export default function Home() {
               </Button>
               <Grid.Container gap={2}>
                 <Grid xs={12}>
-                  <Button type="success" className={styles.submit}>
-                    Buy / Sell
-                  </Button>
+                  <Link href="https://verto.exchange" style={{ "width": "100%" }}>
+                    <Button type="success" className={styles.submit}>
+                      Buy / Sell
+                    </Button>
+                  </Link>
                 </Grid>
                 <Grid xs={12}>
-                  <Button type="default" className={styles.submit}>
-                    cXYZ
-                  </Button>
+                  <Link href="https://verto.exchange" style={{ "width": "100%" }}>
+                    <Button type="default" className={styles.submit}>
+                      cXYZ
+                    </Button>
+                  </Link>
                 </Grid>
               </Grid.Container>
             </Card>
@@ -131,6 +137,7 @@ export default function Home() {
                     Users become their own PSTs, where "following" another user
                     mints a token for them to give to that person.
                   </p>
+                  <p className={styles.center}><code>Type</code>: <code>Profile</code></p>
                 </Card>
               </Grid>
               <Grid xs={24} sm={8}>
@@ -141,6 +148,7 @@ export default function Home() {
                     holders of your social token, or they can be sold to other
                     users.
                   </p>
+                  <p className={styles.center}><code>Type</code>: <code>Post</code></p>
                 </Card>
               </Grid>
               <Grid xs={24} sm={8}>
@@ -150,6 +158,7 @@ export default function Home() {
                     When someone gives another user a "like," a tip is
                     distributed to the user's token holders.
                   </p>
+                  <p className={styles.center}><code>Type</code>: <code>Tip</code></p>
                 </Card>
               </Grid>
               <Grid xs={24}>
